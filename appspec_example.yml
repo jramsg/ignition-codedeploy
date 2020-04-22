@@ -1,0 +1,31 @@
+version: 0.0
+os: linux
+
+files:
+  - source: install_ignition.sh
+    destination: /opt/ignition
+    
+permissions:
+  - object: /opt/ignition
+    pattern: install_ignition.sh
+    mode: 755
+    type:
+      - file
+hooks:
+    BeforeInstall
+      - location: scripts/ignition_stop.sh
+        timeout: 300
+        runas: ec2-user
+      - location: scripts/ignition_getfiles.sh
+        timeout: 300
+        runas: ec2-user
+      - location: scripts/ignition_getcerts.sh
+        timeout: 300
+        runas: ec2-user
+    AfterInstall:
+      - location: scripts/ignition_start.sh
+        timeout: 300
+        runas: ec2-user
+      - location: scripts/ignition_configure.sh
+        timeout: 300
+        runas: ec2-user

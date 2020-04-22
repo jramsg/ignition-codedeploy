@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+
+hooks:
+    BeforeInstall
+      - location: scripts/stop-ignition.sh
+        timeout: 300
+        runas: ec2-user
+    AfterInstall:
+      - location: scripts/install-ignition.sh
+        timeout: 300
+        runas: ec2-user
+      - location: scripts/start-ignition.sh
+        timeout: 300
+        runas: ec2-user
