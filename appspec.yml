@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: files/quim.txt
-  destination: /tmp/
+    destination: /tmp/
 
 hooks:
   BeforeInstall:
