@@ -1,3 +1,5 @@
+#!/bin/bash
+
 INSTFOLDER="/opt/ignition"
 FILE="Ignition-8.0.10-linux-x64-installer.run"
 
