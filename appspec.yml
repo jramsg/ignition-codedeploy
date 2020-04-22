@@ -1,15 +1,13 @@
 version: 0.0
 os: linux
 
+files:
+  - source: files/quim.txt
+  destination: /tmp/
+
 hooks:
-    BeforeInstall
-      - location: scripts/stop-ignition.sh
-        timeout: 300
-        runas: ec2-user
-    AfterInstall:
-      - location: scripts/install-ignition.sh
-        timeout: 300
-        runas: ec2-user
-      - location: scripts/start-ignition.sh
-        timeout: 300
-        runas: ec2-user
+  BeforeInstall:
+    - location: scripts/stop-ignition.sh
+  AfterInstall:
+    - location: scripts/install-ignition.sh
+    - location: scripts/start-ignition.sh
